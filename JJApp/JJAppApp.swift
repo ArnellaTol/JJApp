@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct JJAppApp: App {
+    @StateObject private var dataController = DataBaseController()
+    
+    //@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LogInView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+
         }
     }
 }
